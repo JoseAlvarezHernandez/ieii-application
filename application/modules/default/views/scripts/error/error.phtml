@@ -1,0 +1,20 @@
+<?php //$this->headScript()->appendFile('/scripts/postes/index/index.js', $type = 'text/javascript'); ?>
+<?php $this->headLink()->appendStylesheet('/styles/error/error/index.css'); ?>
+<div id="error">
+	<h2> ERROR : <?php echo $this->message; ?></h2> 
+	<?php if ('production' != $this->env): ?> 
+	<h1>Ha ocurrido un error</h1> 
+	<!-- 
+	    <h3>Informaci&oacute;n de excepci&oacute;n:</h3> 
+	    <p> 
+	        <b>Mensaje:</b> <?php echo $this->exception->getMessage(); ?> 
+	    </p> 
+	
+	    <h3>Traza:</h3> 
+	    <pre><?php echo $this->exception->getTraceAsString() ?></pre> 
+	
+	    <h3>Par&aacute;metros:</h3> 
+	    <pre><?php var_dump($this->request->getParams()) ?></pre>
+	 --> 
+	<?php endif ?>
+</div>

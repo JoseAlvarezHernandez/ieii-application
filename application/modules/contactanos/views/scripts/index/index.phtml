@@ -1,0 +1,130 @@
+<?php $this->headScript()->appendFile('https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false', $type = 'text/javascript'); ?>
+<?php $this->headLink()->appendStylesheet('/styles/contactanos/index.css'); ?>
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-lg-4 col-sm-4">
+            	<h1>Contactanos</h1>
+          </div>
+          <div class="col-lg-8 col-sm-8">
+          	<ol class="breadcrumb pull-right">
+            	<li>
+                	<a href="/">Inicio</a>
+                </li>              
+            </ol>
+          </div>
+   		</div>
+ 	</div>
+</div>
+<!--breadcrumbs end-->
+<!--container start-->
+<div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-sm-5 address">
+          <section class="contact-infos">
+            <h4 class="title custom-font text-black">
+              Direcci&oacute;n
+            </h4>
+            <address>              
+              <br>
+              Ciudad de M&eacute;xico , M&eacute;xico
+              <br>
+              06140
+            </address>
+          </section>
+          <section class="contact-infos">
+            <h4 class="title custom-font text-black">
+              Horario de trabajo
+            </h4>
+            <p>
+              Lunes - Viernes 8am a 8pm
+              <br>
+              Sabado - 7am a 6pm
+              <br>
+              Domingo - Cerrado
+              <br>
+            </p>
+          </section>
+          <section class="contact-infos">
+            <h4>
+              Tel&eacute;fono
+            </h4>
+            <p>
+              <i class="icon-phone"></i>
+              +52 1 55 1149 6118
+            </p>
+
+          </section>
+        </div>
+        <div class="col-lg-7 col-sm-7 address">
+          <h4>
+            Dejanos saber de ti, escribenos
+          </h4>
+          <h4 id="textMessage"  class="<?php echo $this->class; ?>">
+              <?php echo $this->textResult; ?>
+          </h4>
+          <div class="contact-form">
+            <form action="/contactanos" method="post">
+              <div class="form-group">
+                <label for="name">
+                  Nombre
+                </label>
+                <input type="text" placeholder="" value="<?php echo $this->name; ?>" name="name" id="name" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="email">
+                  Correo
+                </label>
+                <input type="text" placeholder="" value="<?php echo $this->email; ?>" name="email" id="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="phone">
+                  Tel&eacute;fono
+                </label>
+                <input type="text" id="phone" name="phone" value="<?php echo $this->phone; ?>" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="phone">
+                  Asunto
+                </label>
+                <textarea placeholder="" rows="5" value="<?php echo $this->asunto; ?>" name="asunto" class="form-control">
+                </textarea>
+              </div>
+              <button class="btn btn-info"  type="submit" >
+                Enviar
+              </button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" href="/scripts/contactanos/index.js" ></script>
+    <!--container end-->
+
+    <!--google map start-->
+    <div class="contact-map">
+      <div id="map-canvas" style="width: 90%; height: 400px; left:5%;">
+      </div>
+    </div>
+    <script type="text/javascript">
+    <!--google map end-->    
+     //google map
+      function initialize() {
+        var myLatlng = new google.maps.LatLng(19.432608,-99.133209);
+        var mapOptions = {
+          zoom: 5,
+          center: myLatlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          title: 'Contact'
+        }
+                                           );
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+      </script>
